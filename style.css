@@ -12,6 +12,25 @@ html {
     scroll-behavior: smooth;
 }
 
+#bg-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.navbar,
+.hero,
+.section,
+.experience,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
 
 body {
     font-family: 'Inter', sans-serif;
@@ -260,8 +279,6 @@ nav a:hover {
 }
 
 
-/* DECORATION */
-
 .hero-decoration {
     position: relative;
 
@@ -501,9 +518,6 @@ nav a:hover {
 .info-grid strong {
     font-size: 14px;
 }
-
-
-/* SKILLS */
 
 .skills {
     background: #f7f8fa;
