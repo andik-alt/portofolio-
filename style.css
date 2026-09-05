@@ -15,9 +15,17 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #f7f8fa;
     color: #17202a;
     line-height: 1.7;
+
+    background: linear-gradient(120deg, #f7f8fa 0%, #fdf1ea 45%, #f4f6f8 100%);
+    background-size: 220% 220%;
+    animation: bgShift 20s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 
@@ -48,8 +56,6 @@ a {
     transition: box-shadow .3s ease, border-color .3s ease;
 }
 
-/* efek pas discroll (sebelumnya class ini ditambahkan lewat JS
-   tapi belum ada style-nya sama sekali) */
 .navbar.scrolled {
     box-shadow: 0 8px 24px rgba(23,32,42,.08);
     border-bottom-color: #e8eaed;
@@ -99,9 +105,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-
-/* HERO */
-
 .hero {
     min-height: 90vh;
 
@@ -111,9 +114,51 @@ nav a:hover {
 
     padding: 80px 10%;
 
-    background: #f7f8fa;
+    background: transparent;
 
     overflow: hidden;
+    position: relative;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero::before {
+    width: 260px;
+    height: 260px;
+    background: #ffd7b8;
+    opacity: .55;
+    top: -70px;
+    right: -60px;
+    animation: floatBlob 9s ease-in-out infinite;
+}
+
+.hero::after {
+    width: 210px;
+    height: 210px;
+    background: #dfe3e8;
+    opacity: .6;
+    bottom: -60px;
+    left: -50px;
+    animation: floatBlob 12s ease-in-out infinite reverse;
+}
+
+@keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(18px, -22px); }
+}
+
+.hero-content,
+.hero-decoration {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -212,8 +257,6 @@ nav a:hover {
     color: #ff6b35;
 }
 
-
-/* DECORATION */
 
 .hero-decoration {
     position: relative;
@@ -663,6 +706,30 @@ nav a:hover {
     background: #17202a;
 
     color: white;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.experience::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #ff6b35;
+    opacity: .12;
+    filter: blur(80px);
+    top: -80px;
+    right: -60px;
+    z-index: 0;
+    animation: floatBlob 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.timeline {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -1062,7 +1129,11 @@ footer small {
     .hero-content,
     .hero-decoration,
     .circle,
-    .code-box {
+    .code-box,
+    .hero::before,
+    .hero::after,
+    .experience::before,
+    body {
         animation: none !important;
         transition: none !important;
         opacity: 1 !important;
