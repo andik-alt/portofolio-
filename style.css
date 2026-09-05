@@ -105,6 +105,8 @@ nav a:hover {
     cursor: pointer;
 }
 
+
+
 .hero {
     min-height: 90vh;
 
@@ -258,6 +260,8 @@ nav a:hover {
 }
 
 
+/* DECORATION */
+
 .hero-decoration {
     position: relative;
 
@@ -351,6 +355,9 @@ nav a:hover {
     text-align: center;
 
     margin-bottom: 65px;
+
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -363,8 +370,34 @@ nav a:hover {
 
 .about {
     background: white;
+    position: relative;
+    overflow: hidden;
 }
 
+.about::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #ff6b35;
+    opacity: .07;
+    filter: blur(70px);
+    top: -60px;
+    left: -70px;
+    z-index: 0;
+    animation: floatBlob 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+
+.about-container,
+.skills-grid,
+.project-grid,
+.contact-grid {
+    position: relative;
+    z-index: 1;
+}
 
 .about-container {
     max-width: 1050px;
@@ -474,6 +507,24 @@ nav a:hover {
 
 .skills {
     background: #f7f8fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.skills::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #17202a;
+    opacity: .05;
+    filter: blur(80px);
+    bottom: -80px;
+    right: -60px;
+    z-index: 0;
+    animation: floatBlob 11s ease-in-out infinite reverse;
+    pointer-events: none;
 }
 
 
@@ -572,6 +623,24 @@ nav a:hover {
 
 .projects {
     background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #ff6b35;
+    opacity: .07;
+    filter: blur(70px);
+    top: -50px;
+    right: -60px;
+    z-index: 0;
+    animation: floatBlob 9s ease-in-out infinite;
+    pointer-events: none;
 }
 
 
@@ -816,6 +885,24 @@ nav a:hover {
 
 .contact {
     background: #f7f8fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #17202a;
+    opacity: .05;
+    filter: blur(80px);
+    bottom: -70px;
+    left: -60px;
+    z-index: 0;
+    animation: floatBlob 12s ease-in-out infinite reverse;
+    pointer-events: none;
 }
 
 
@@ -1133,6 +1220,10 @@ footer small {
     .hero::before,
     .hero::after,
     .experience::before,
+    .about::before,
+    .skills::before,
+    .projects::before,
+    .contact::before,
     body {
         animation: none !important;
         transition: none !important;
